@@ -23,3 +23,8 @@ node_modules/
 
 # Build output (if a build step is ever added)
 dist/
+
+# scratch screenshots from verification runs
+hero-*-FINAL.jpg
+hero-cand-*.jpg
+*-verify*.jpg
