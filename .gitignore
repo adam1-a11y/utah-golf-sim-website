@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Netlify
+.netlify/
+
+# Node (in case tooling is added later)
+node_modules/
+
+# Local env / secrets
+.env
+.env.*
+
+# Build output (if a build step is ever added)
+dist/
