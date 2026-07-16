@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 48" width="250" height="48" role="img" aria-label="Utah Golf Sim">
+  <!-- Live text: Fraunces (wordmark) + IBM Plex Mono (eyebrow).
+       Standalone use only — when placed via <img> external fonts cannot load,
+       so this file @imports them for direct/object embedding. In HTML pages,
+       inline this markup instead so document fonts apply. -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap');
+  </style>
+  <circle cx="7" cy="40" r="3.5" fill="#C9A15A"/>
+  <path d="M7 40 C 17 14, 31 8, 44 16" fill="none" stroke="#C9A15A" stroke-width="2.25" stroke-linecap="round"/>
+  <text x="56" y="15" font-family="'IBM Plex Mono', ui-monospace, monospace" font-weight="500" font-size="10" letter-spacing="6" fill="#C9A15A">UTAH</text>
+  <text x="55" y="39" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="24" letter-spacing="1.5" fill="#16281E">GOLF SIM</text>
+</svg>

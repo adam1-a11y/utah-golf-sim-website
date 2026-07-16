@@ -131,18 +131,13 @@ ul {
   min-height: 72px;
 }
 
-.wordmark {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  letter-spacing: 0.14em;
-  color: var(--paper);
-  text-decoration: none;
-  white-space: nowrap;
+.logo {
+  display: inline-block;
+  line-height: 0;
 }
 
-.wordmark span {
-  color: var(--brass);
+.logo svg {
+  display: block;
 }
 
 .site-nav ul {
@@ -247,10 +242,35 @@ ul {
 /* ---------- Hero ---------- */
 
 .hero {
-  background: var(--green);
+  position: relative;
+  background-color: var(--green);
+  /* photo + directional scrim: ~90% over the copy, easing to ~35% where
+     the ball sits, so the average sits in the 55-65% band */
+  background-image:
+    linear-gradient(92deg,
+      rgba(14, 26, 19, 0.93) 0%,
+      rgba(14, 26, 19, 0.82) 34%,
+      rgba(22, 40, 30, 0.52) 68%,
+      rgba(22, 40, 30, 0.35) 100%),
+    url("../assets/hero.jpg");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
   color: var(--paper);
-  padding: 4.5rem 0 0;
   overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  min-height: min(76vh, 660px);
+  padding-top: 4rem;
+  padding-bottom: 9rem; /* room for the tracer overlay */
+}
+
+.hero-copy {
+  max-width: 34rem;
 }
 
 .hero h1 {
@@ -278,15 +298,20 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin: 2rem 0 3rem;
+  margin: 2rem 0 0;
 }
 
-/* Ball-flight trajectory — the one bold visual moment */
+/* Ball-flight trajectory — the one bold visual moment.
+   Bleeds off the right edge of the viewport, over the hero photo. */
 
 .trajectory {
   display: block;
-  width: 100%;
-  margin-top: 1rem;
+  position: absolute;
+  right: -2vw;
+  bottom: 4px;
+  width: min(51vw, 760px);
+  height: auto;
+  pointer-events: none;
 }
 
 .trajectory .flight-path {
@@ -337,16 +362,17 @@ ul {
   fill: none;
 }
 
+/* Resting state is fully visible; animation only adds the draw-on.
+   If animations never run (reduced motion, background tab, no JS),
+   the tracer still shows. */
 @media (prefers-reduced-motion: no-preference) {
   .trajectory .flight-path {
     stroke-dasharray: 1100;
-    stroke-dashoffset: 1100;
-    animation: draw-flight 2.4s cubic-bezier(0.33, 0.1, 0.3, 1) 0.3s forwards;
+    animation: draw-flight 2.4s cubic-bezier(0.33, 0.1, 0.3, 1) 0.3s backwards;
   }
 
   .trajectory .readout-group {
-    opacity: 0;
-    animation: fade-readout 0.6s ease forwards;
+    animation: fade-readout 0.6s ease backwards;
   }
 
   .trajectory .readout-launch  { animation-delay: 0.6s; }
@@ -355,10 +381,12 @@ ul {
   .trajectory .readout-carry   { animation-delay: 2.5s; }
 
   @keyframes draw-flight {
+    from { stroke-dashoffset: 1100; }
     to { stroke-dashoffset: 0; }
   }
 
   @keyframes fade-readout {
+    from { opacity: 0; }
     to { opacity: 1; }
   }
 }
@@ -366,11 +394,29 @@ ul {
 /* ---------- Sections ---------- */
 
 .section {
-  padding: 4.5rem 0;
+  padding: 4.75rem 0 5.25rem;
+}
+
+/* Pacing modifiers — sections should not stack at one uniform height */
+.section-tight {
+  padding: 3.25rem 0 3.75rem;
+}
+
+.section-roomy {
+  padding: 6.25rem 0 6.75rem;
+}
+
+/* Fine film-grain noise, tiled; embedded so there's no extra request */
+:root {
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .section-dark {
-  background: var(--green-dark);
+  background-color: var(--green-dark);
+  background-image:
+    var(--noise),
+    radial-gradient(1100px 520px at 82% -12%, rgba(201, 161, 90, 0.085), transparent 62%),
+    linear-gradient(180deg, #132218 0%, var(--green-dark) 100%);
   color: var(--paper);
 }
 
@@ -469,10 +515,17 @@ ul {
   padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
+  box-shadow:
+    0 1px 2px rgba(14, 26, 19, 0.25),
+    0 20px 44px -20px rgba(0, 0, 0, 0.5);
 }
 
 .tier-card.tier-featured {
   border-color: var(--brass);
+  box-shadow:
+    0 1px 2px rgba(14, 26, 19, 0.3),
+    0 28px 56px -20px rgba(0, 0, 0, 0.6);
+  transform: translateY(-6px);
 }
 
 .tier-card .tier-tag {
@@ -583,10 +636,15 @@ ul {
 /* Room-spec readout block */
 
 .spec-panel {
-  background: var(--green);
+  background-color: var(--green);
+  background-image:
+    var(--noise),
+    radial-gradient(640px 300px at 90% -20%, rgba(201, 161, 90, 0.09), transparent 60%);
+  border: 1px solid rgba(201, 161, 90, 0.16);
   border-radius: var(--radius);
   padding: 2.25rem 2rem;
   margin-top: 2.5rem;
+  box-shadow: 0 24px 48px -24px rgba(14, 26, 19, 0.55);
 }
 
 .spec-panel .spec-title {
@@ -644,17 +702,27 @@ ul {
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--paper);
+  box-shadow:
+    0 1px 2px rgba(14, 26, 19, 0.06),
+    0 16px 36px -20px rgba(14, 26, 19, 0.35);
 }
 
 .gallery-card .card-canvas {
   aspect-ratio: 4 / 3;
-  background:
-    linear-gradient(160deg, rgba(201, 161, 90, 0.06), rgba(22, 40, 30, 0) 55%),
-    var(--green);
+  background-color: var(--green-dark);
+  background-image:
+    var(--noise),
+    radial-gradient(360px 240px at 78% -10%, rgba(201, 161, 90, 0.10), transparent 65%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--brass);
+  padding: 1.25rem;
+}
+
+.gallery-card .card-canvas svg {
+  width: 78%;
+  height: auto;
 }
 
 .gallery-card .card-body {
@@ -822,9 +890,12 @@ ul {
 /* ---------- CTA band ---------- */
 
 .cta-band {
-  background: var(--green-dark);
+  background-color: var(--green-dark);
+  background-image:
+    var(--noise),
+    radial-gradient(900px 420px at 50% 120%, rgba(201, 161, 90, 0.10), transparent 60%);
   color: var(--paper);
-  padding: 4.5rem 0;
+  padding: 5.5rem 0 6rem;
   text-align: center;
 }
 
@@ -854,8 +925,8 @@ ul {
   gap: 2.5rem;
 }
 
-.site-footer .wordmark {
-  font-size: 1.1rem;
+.site-footer .logo-stacked svg {
+  margin-left: -10px; /* optically align lockup with the text column */
 }
 
 .site-footer h3 {
@@ -921,6 +992,19 @@ ul {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-top: 3.5rem;
+    padding-bottom: 0;
+  }
+
+  .trajectory {
+    position: static;
+    width: 100%;
+    margin: 2.75rem 0 0;
+  }
+
   .feature-grid,
   .tier-grid,
   .gallery-grid,
@@ -946,6 +1030,13 @@ ul {
 }
 
 @media (max-width: 640px) {
+  .hero {
+    /* smaller image + flat scrim: copy spans the full width here */
+    background-image:
+      linear-gradient(rgba(14, 26, 19, 0.8), rgba(14, 26, 19, 0.8)),
+      url("../assets/hero-mobile.jpg");
+  }
+
   .section {
     padding: 3.25rem 0;
   }

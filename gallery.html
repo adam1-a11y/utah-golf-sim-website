@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-icon.svg">
+  <meta property="og:site_name" content="Utah Golf Sim">
+  <meta property="og:image" content="https://golfsimutah.com/assets/logo-icon.svg">
 
   <!-- ============================================================
        META PIXEL — placeholder. Account not created yet.
@@ -48,7 +51,14 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="index.html">UTAH GOLF <span>SIM</span></a>
+      <a class="logo" href="index.html" aria-label="Utah Golf Sim — Home">
+        <svg viewBox="0 0 250 48" width="205" height="40" aria-hidden="true" focusable="false">
+          <circle cx="7" cy="40" r="3.5" fill="#C9A15A"/>
+          <path d="M7 40 C 17 14, 31 8, 44 16" fill="none" stroke="#C9A15A" stroke-width="2.25" stroke-linecap="round"/>
+          <text x="56" y="15" font-family="'IBM Plex Mono', ui-monospace, monospace" font-weight="500" font-size="10" letter-spacing="6" fill="#C9A15A">UTAH</text>
+          <text x="55" y="39" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="24" letter-spacing="1.5" fill="#F7F5F0">GOLF SIM</text>
+        </svg>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="visually-hidden" hidden>Menu</span>
         <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
@@ -82,10 +92,24 @@
         <div class="gallery-grid">
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for basement simulator build photos — photos coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path d="M6 20L24 8l18 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M10 18v22h28V18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M10 30h28" stroke="currentColor" stroke-width="2"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -96,9 +120,24 @@
 
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for garage bay simulator photos — photos coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path d="M6 40V16L24 6l18 10v24" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M12 40V22h24v18M12 28h24M12 34h24" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -109,10 +148,24 @@
 
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for dedicated simulator room photos — photos coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <rect x="6" y="10" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-                <path d="M14 40h20M24 34v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M13 27c4-8 8-10 11-10s7 2 11 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -123,9 +176,24 @@
 
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for 3D room render examples — coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <path d="M24 6l16 9v18l-16 9-16-9V15l16-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M24 24l16-9M24 24v18M24 24L8 15" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -136,10 +204,24 @@
 
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for enclosure and impact screen photos — coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <rect x="8" y="8" width="32" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
-                <rect x="14" y="14" width="20" height="20" stroke="currentColor" stroke-width="2"/>
-                <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -150,10 +232,24 @@
 
           <article class="gallery-card">
             <div class="card-canvas" role="img" aria-label="Placeholder for launch monitor setup photos — coming soon.">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <rect x="10" y="26" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
-                <circle cx="34" cy="30" r="3" stroke="currentColor" stroke-width="2"/>
-                <path d="M25 27c3-9 7-13 12-16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 5"/>
+              <svg viewBox="0 0 240 170" fill="none" aria-hidden="true">
+                <line x1="12" y1="14" x2="228" y2="14" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5"/>
+                <line x1="151" y1="14" x2="151" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="138" y="21" width="26" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="142" cy="27" r="1.8" fill="currentColor"/>
+                <line x1="137" y1="27" x2="125" y2="36" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <line x1="137" y1="29" x2="125" y2="96" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <rect x="20" y="30" width="104" height="72" rx="3" stroke="currentColor" stroke-width="2"/>
+                <line x1="28" y1="80" x2="116" y2="80" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.5"/>
+                <line x1="97" y1="80" x2="97" y2="57" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M97 57l10 4-10 4z" fill="currentColor"/>
+                <path d="M124 30 L166 20 M124 102 L166 124 M166 20 V124" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+                <path d="M150 132h44l16 18h-44z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="176" cy="141" r="3" fill="currentColor"/>
+                <rect x="206" y="134" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="206" y1="139" x2="183" y2="141" stroke="currentColor" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4"/>
+                <path d="M176 141 C 152 88, 112 68, 64 73" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <circle cx="64" cy="73" r="2" fill="currentColor"/>
               </svg>
             </div>
             <div class="card-body">
@@ -180,7 +276,15 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="wordmark" href="index.html">UTAH GOLF <span>SIM</span></a>
+          <a class="logo logo-stacked" href="index.html" aria-label="Utah Golf Sim — Home">
+            <svg viewBox="0 0 360 168" width="240" height="112" aria-hidden="true" focusable="false">
+              <circle cx="62" cy="56" r="4" fill="#C9A15A"/>
+              <path d="M62 56 C 130 4, 224 -2, 298 26" fill="none" stroke="#C9A15A" stroke-width="2.5" stroke-linecap="round"/>
+              <text x="180" y="88" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-weight="500" font-size="13" letter-spacing="10" fill="#C9A15A">UTAH</text>
+              <text x="180" y="130" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="42" letter-spacing="2" fill="#F7F5F0">GOLF SIM</text>
+              <text x="180" y="156" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-weight="400" font-size="9" letter-spacing="3.5" fill="rgba(247,245,240,0.6)">SIMULATOR DESIGN &#183; SALES &#183; INSTALLATION</text>
+            </svg>
+          </a>
           <p style="margin-top: 1rem;">Residential golf simulator design, sales, and installation. Serving Utah County and Salt Lake County, Utah.</p>
         </div>
         <div>
