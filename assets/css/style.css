@@ -121,8 +121,12 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
 
 .hero__media{position:relative;align-self:stretch;min-height:340px;background:var(--green-deep)}
+.hero__media picture{display:contents}
 .hero__media img,.hero__media video{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  /* the photo is shot bright and centre-weighted; bias the crop right so the
+     screen wall sits clear of the headline column */
+  object-position:62% center;
 }
 .hero__scrim{
   position:absolute;inset:0;
@@ -147,19 +151,33 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 }
 
 /* data readout */
+/* The readouts float on the photograph, whose brightness swings from dark
+   turf to a lit projector screen — 36 yds landed on the fairway at 1.5:1.
+   A scrim under the strip gives every number a predictable dark backing
+   instead of trusting whatever pixel happens to be behind it. */
+.readout::before{
+  content:"";position:absolute;left:calc(var(--pad) * -1);right:calc(var(--pad) * -1);
+  top:-18px;bottom:-26px;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(14,26,19,0) 0%,rgba(14,26,19,.55) 22%,rgba(14,26,19,.88) 48%,rgba(14,26,19,.95) 100%);
+}
 .readout{
   position:absolute;left:var(--pad);bottom:26px;right:var(--pad);
   display:flex;gap:clamp(16px,3vw,40px);flex-wrap:wrap;
   padding-top:16px;border-top:1px solid var(--rule);
+  isolation:isolate;
 }
 .readout__item{min-width:78px}
 .readout__num{
-  font-family:var(--mono);font-size:clamp(15px,1.5vw,19px);font-weight:600;
+  font-family:var(--mono);font-size:clamp(17px,1.5vw,19px);font-weight:600;
   color:var(--brass);letter-spacing:-.01em;
+  /* brass is a mid-tone and the apex figure lands on the lit screen; the
+     shadow carries it where the scrim alone can't reach */
+  text-shadow:0 1px 3px rgba(9,17,12,.95),0 0 8px rgba(9,17,12,.7);
 }
 .readout__lbl{
-  font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:rgba(247,245,240,.46);margin-top:3px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(247,245,240,.66);margin-top:3px;
+  text-shadow:0 1px 3px rgba(9,17,12,.9);
 }
 
 @media (max-width:1000px){
