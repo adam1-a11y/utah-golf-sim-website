@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Utah Golf Sim icon">
-  <!-- Icon mark: pure paths, no text — safe for favicon and social contexts
-       where external fonts can never load. -->
-  <rect width="64" height="64" rx="13" fill="#0E1A13"/>
-  <circle cx="15" cy="46" r="4.5" fill="#F7F5F0"/>
-  <path d="M15 46 C 26 18, 41 12, 53 21" fill="none" stroke="#C9A15A" stroke-width="3" stroke-linecap="round"/>
-  <path d="M49 14 L 53 21 L 45 22" fill="none" stroke="#C9A15A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="100" fill="#16281E"/>
+  <path d="M 44 146 C 92 146, 126 128, 144 84" fill="none"
+        stroke="#C9A15A" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="150" cy="62" r="15" fill="#C9A15A"/>
 </svg>

@@ -1,0 +1,9 @@
+<svg viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg">
+  <text x="72" y="60" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', monospace" font-size="18" letter-spacing="12" fill="#C9A15A">UTAH</text>
+  <text x="70" y="146" font-family="Fraunces, 'GFS Baskerville', Georgia, serif" font-size="78" font-weight="700" fill="#F7F5F0">GOLF SIM</text>
+  <path d="M 72 172 C 240 172, 400 174, 486 164 C 560 154, 596 122, 610 82"
+        fill="none" stroke="#C9A15A" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="610" cy="82" r="5.5" fill="#C9A15A"/>
+  <text x="72" y="206" font-family="'IBM Plex Mono', 'DejaVu Sans Mono', monospace" font-size="14" letter-spacing="3.5"
+        fill="#F7F5F0" opacity="0.75">RESIDENTIAL <tspan font-family="Fraunces, 'GFS Baskerville', Georgia, serif" font-style="italic" font-size="17">&amp;</tspan> COMMERCIAL INSTALLATION</text>
+</svg>
