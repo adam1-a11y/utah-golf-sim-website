@@ -52,7 +52,9 @@
     rv.forEach(function (el) { el.classList.add('in'); });
     return;
   }
+  var ioFired = false;
   var io = new IntersectionObserver(function (entries) {
+    ioFired = true;
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
@@ -61,4 +63,10 @@
     el.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
     io.observe(el);
   });
+  /* Failsafe: a real browser fires an initial callback as soon as anything is
+     observed. If the observer stays silent (some embedded/headless renderers),
+     every .rv section would sit at opacity 0 forever — reveal instead. */
+  setTimeout(function () {
+    if (!ioFired) rv.forEach(function (el) { el.style.transitionDelay = ''; el.classList.add('in'); });
+  }, 2000);
 })();
