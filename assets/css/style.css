@@ -415,3 +415,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   .gwork__card:hover .gwork__media img{transform:none}
   .tier:hover{transform:none}
 }
+
+.foot__social{display:flex;gap:16px;margin-top:12px;list-style:none}
+.foot__social a{color:var(--brass);display:inline-flex;transition:opacity .15s ease}
+.foot__social a:hover{opacity:.65}
