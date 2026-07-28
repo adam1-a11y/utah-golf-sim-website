@@ -2,14 +2,20 @@
    UTAH GOLF SIM — brand system
    ============================================================ */
 :root{
-  --green:#16281E;
-  --green-deep:#0E1A13;
-  --cream:#F7F5F0;
-  --brass:#C9A15A;
-  --brass-dim:#8F7340;
-  --ink:#101913;
-  --rule:rgba(247,245,240,.14);
-  --rule-dark:rgba(22,40,30,.14);
+  /* 2026 rebrand — dark charcoal + neon-green, matching the Facebook cover.
+     Variable NAMES are kept from the old scheme so existing inline var(--…)
+     references keep working; only the VALUES moved to the new palette. */
+  --green:#1A1A1A;        /* charcoal — dark base (nav, hero, dark sections) */
+  --green-deep:#0F0F0F;   /* deeper charcoal — footer / deepest bands */
+  --cream:#F2F2F2;        /* light-gray — body bg + light text on dark */
+  --brass:#7CC242;        /* accent-green (neon) — the new accent, replaces brass */
+  --brass-dim:#2E7032;    /* primary-green — deeper accent */
+  --ink:#1A1A1A;          /* charcoal text on light sections */
+  --primary-green:#2E7032;
+  --accent-green:#7CC242;
+  --white:#FFFFFF;
+  --rule:rgba(242,242,242,.14);
+  --rule-dark:rgba(26,26,26,.14);
 
   --display:"Fraunces",Georgia,"Times New Roman",serif;
   --body:"Public Sans",system-ui,-apple-system,sans-serif;
@@ -27,6 +33,7 @@ body{
   font-family:var(--body);font-size:17px;line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
+@media (min-width:1100px){body{font-size:18px}}
 img,video,svg{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0;letter-spacing:-.01em}
@@ -38,7 +45,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 
 /* ---------- eyebrow ---------- */
 .eyebrow{
-  font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+  font-family:var(--mono);font-size:12px;letter-spacing:.34em;
   text-transform:uppercase;color:var(--brass);margin:0 0 18px;
 }
 
@@ -50,13 +57,17 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   border-bottom:1px solid var(--rule);
 }
 .nav__in{
-  max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);
+  max-width:var(--maxw);margin:0 auto;padding:8px var(--pad);
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 /* logo — stacked lockup, fixes the run-together bug */
 .logo{text-decoration:none;display:block;line-height:0}
-.logo-mark{display:block;width:190px;height:auto}
-.foot .logo-mark{width:230px}
+/* nav uses the real horizontal brand logo (correct font + colors baked in),
+   sized large so the "GOLF SIM" sub-line stays legible */
+.nav .logo__img{display:block;height:60px;width:auto}
+.logo__img--foot{display:block;height:auto;width:150px}
+@media (max-width:900px){.nav .logo__img{height:52px}}
+@media (max-width:380px){.nav .logo__img{height:46px}}
 .logo__eyebrow{
   display:block;font-family:var(--mono);font-size:10px;font-weight:600;
   letter-spacing:.42em;color:var(--brass);margin-bottom:5px;
@@ -69,7 +80,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 .nav__links li+li{margin-left:0}
 @supports not (gap:1px){.nav__links li+li{margin-left:30px}}
 .nav__links a{
-  font-size:13px;letter-spacing:.06em;text-decoration:none;color:var(--cream);
+  font-size:14px;letter-spacing:.06em;text-decoration:none;color:var(--cream);
   opacity:.82;padding:6px 0;border-bottom:1.5px solid transparent;
 }
 .nav__links a:hover{opacity:1}
@@ -77,13 +88,13 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 .nav__toggle{display:none;background:none;border:0;color:var(--cream);padding:8px;cursor:pointer}
 
 .btn{
-  display:inline-block;font-family:var(--mono);font-size:12px;font-weight:600;
+  display:inline-block;font-family:var(--mono);font-size:13px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
-  padding:13px 24px;border:1.5px solid transparent;cursor:pointer;transition:.18s;
+  padding:15px 28px;border:1.5px solid transparent;cursor:pointer;transition:.18s;
 }
 .btn--brass{background:var(--brass);color:var(--green)}
-.btn--brass:hover{background:#d8b271}
-.btn--ghost{border-color:var(--rule);color:var(--cream)}
+.btn--brass:hover{background:#93d45f;box-shadow:0 0 24px -4px rgba(124,194,66,.55)}
+.btn--ghost{border-color:rgba(242,242,242,.32);color:var(--cream)}
 .btn--ghost:hover{border-color:var(--brass);color:var(--brass)}
 .btn--ink{border-color:var(--green);color:var(--green)}
 .btn--ink:hover{background:var(--green);color:var(--cream)}
@@ -104,52 +115,87 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 /* ============================================================
    HERO — asymmetric, media bleeds right
    ============================================================ */
-.hero{background:var(--green);color:var(--cream);position:relative;overflow:hidden}
+.hero{
+  background:
+    radial-gradient(120% 90% at 8% 18%,rgba(46,112,50,.42) 0%,rgba(46,112,50,0) 55%),
+    radial-gradient(90% 80% at 2% 96%,rgba(124,194,66,.18) 0%,rgba(124,194,66,0) 48%),
+    var(--green);
+  color:var(--cream);position:relative;overflow:hidden;
+}
+.hero h1 em{text-shadow:0 0 26px rgba(124,194,66,.4)}
 .hero__grid{
   max-width:var(--maxw);margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);align-items:center;
-  min-height:min(86vh,780px);
+  display:flex;align-items:center;
+  min-height:min(88vh,800px);
 }
-.hero__copy{padding:80px var(--pad) 80px}
+/* copy stacks ABOVE the media/scrim so the text stays bright and the CTAs
+   receive clicks (the scrim was intercepting them) */
+.hero__copy{position:relative;z-index:2;padding:clamp(64px,8vw,104px) var(--pad);max-width:720px}
+/* desktop: extra bottom padding lifts the centred copy, reserving a clear
+   lane for the stats bar beneath the CTA row */
+@media (min-width:961px){.hero__copy{padding-bottom:clamp(140px,18vh,180px)}}
 .hero h1{
-  font-size:clamp(2.6rem,5.4vw,4.4rem);color:var(--cream);
-  margin:0 0 22px;letter-spacing:-.025em;
+  font-size:clamp(2.9rem,6.2vw,5.3rem);color:var(--cream);
+  margin:0 0 24px;letter-spacing:-.025em;
 }
 .hero h1 em{font-style:italic;color:var(--brass)}
 .hero__sub{
-  font-size:clamp(1rem,1.35vw,1.16rem);line-height:1.62;
-  color:rgba(247,245,240,.76);max-width:48ch;margin:0 0 34px;
+  font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.6;
+  color:rgba(242,242,242,.8);max-width:50ch;margin:0 0 38px;
 }
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
 
-.hero__media{position:relative;align-self:stretch;min-height:340px;background:var(--green-deep)}
+/* full-bleed: the photo fills the whole hero, headline sits over it.
+   pointer-events:none — the layer is purely visual, clicks pass through. */
+.hero__media{position:absolute;inset:0;z-index:0;background:var(--green-deep);pointer-events:none}
 .hero__media picture{display:contents}
 .hero__media img,.hero__media video{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  /* the photo is shot bright and centre-weighted; bias the crop right so the
-     screen wall sits clear of the headline column */
-  object-position:62% center;
+  /* centred crop matches the tracer SVG's xMid slice so the arc stays aligned */
+  object-position:center;
 }
+/* the cinematic grade is baked into hero-dark.jpg; the scrim only guards the
+   headline column and adds the green ambience */
 .hero__scrim{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--green) 0%,rgba(22,40,30,.86) 22%,rgba(22,40,30,.34) 62%,rgba(22,40,30,.5) 100%);
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(46% 42% at 60% 86%,rgba(124,194,66,.12) 0%,rgba(124,194,66,0) 70%),
+    linear-gradient(90deg,rgba(10,12,10,.92) 0%,rgba(10,12,10,.66) 30%,rgba(10,12,10,.18) 56%,rgba(10,12,10,0) 74%),
+    linear-gradient(180deg,rgba(10,12,10,.42) 0%,rgba(10,12,10,0) 26%,rgba(10,12,10,0) 62%,rgba(10,12,10,.55) 100%);
 }
 .hero__tracer{position:absolute;inset:0;width:100%;height:100%}
 
-/* tracer draw-on */
+/* tracer draw-on: soft wide glow underneath, hot neon core on top */
 .tracer__path{
-  fill:none;stroke:var(--brass);stroke-width:2.4;stroke-linecap:round;
+  fill:none;stroke:#AEE85E;stroke-width:3.6;stroke-linecap:round;
+  filter:drop-shadow(0 0 6px rgba(124,194,66,.8));
   stroke-dasharray:1000;stroke-dashoffset:1000;
+}
+.tracer__path--under{
+  stroke:var(--brass);stroke-width:10;opacity:.32;filter:blur(5px);
 }
 .is-ready .tracer__path{animation:draw 1.5s cubic-bezier(.22,.9,.3,1) .25s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.tracer__ball{opacity:0}
-.is-ready .tracer__ball{animation:pop .4s ease-out 1.6s forwards}
+.tracer__ball{fill:#D6FA92;filter:drop-shadow(0 0 8px rgba(174,232,94,.95))}
+.tracer__ball--tee{opacity:.95}
+.tracer__tee-halo{fill:var(--brass);opacity:.25;filter:blur(7px)}
+.tracer__ball--land{opacity:0}
+.is-ready .tracer__ball--land{animation:pop .4s ease-out 1.6s forwards}
 @keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
-.tracer__tick{stroke:rgba(247,245,240,.2);stroke-width:1}
+/* glowing impact ring on the screen where the shot lands */
+.tracer__ring{
+  fill:none;stroke:#AEE85E;stroke-width:2.6;opacity:0;
+  filter:drop-shadow(0 0 6px rgba(124,194,66,.9));
+}
+.tracer__ring--outer{stroke:var(--brass);stroke-width:1.6;filter:blur(2px)}
+.is-ready .tracer__ring{animation:ringpop .55s ease-out 1.65s forwards}
+.is-ready .tracer__ring--outer{animation:ringpop .55s ease-out 1.75s forwards,ringpulse 2.8s ease-in-out 2.6s infinite}
+@keyframes ringpop{from{opacity:0;transform:scale(.35)}to{opacity:.92;transform:scale(1)}}
+@keyframes ringpulse{0%,100%{opacity:.9}50%{opacity:.45}}
+.tracer__tick{stroke:rgba(242,242,242,.2);stroke-width:1}
 .tracer__lbl{
   font-family:var(--mono);font-size:8px;letter-spacing:.16em;
-  fill:rgba(247,245,240,.5);text-transform:uppercase;
+  fill:rgba(242,242,242,.5);text-transform:uppercase;
 }
 
 /* data readout */
@@ -157,67 +203,75 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
    turf to a lit projector screen — 36 yds landed on the fairway at 1.5:1.
    A scrim under the strip gives every number a predictable dark backing
    instead of trusting whatever pixel happens to be behind it. */
-.readout::before{
-  content:"";position:absolute;left:calc(var(--pad) * -1);right:calc(var(--pad) * -1);
-  top:-18px;bottom:-26px;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(14,26,19,0) 0%,rgba(14,26,19,.55) 22%,rgba(14,26,19,.88) 48%,rgba(14,26,19,.95) 100%);
-}
 .readout{
-  position:absolute;left:var(--pad);bottom:26px;right:var(--pad);
-  display:flex;gap:clamp(16px,3vw,40px);flex-wrap:wrap;
-  padding-top:16px;border-top:1px solid var(--rule);
-  isolation:isolate;
+  position:absolute;right:clamp(20px,3vw,44px);bottom:clamp(14px,2vw,26px);left:auto;
+  width:min(56%,760px);
+  display:flex;justify-content:space-between;align-items:center;gap:0;
+  padding:13px clamp(10px,1.3vw,20px);
+  background:rgba(8,10,8,.55);
+  -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+  border:1px solid rgba(242,242,242,.16);border-radius:10px;
+  box-shadow:0 18px 50px -24px rgba(0,0,0,.9);
 }
-.readout__item{min-width:78px}
+.readout__item{flex:1;min-width:0;padding:2px clamp(12px,1.5vw,22px)}
+.readout__item+.readout__item{border-left:1px solid rgba(242,242,242,.14)}
+/* short windows can't fit the bar under the CTA row */
+@media (max-height:640px){.readout{display:none}}
 .readout__num{
-  font-family:var(--mono);font-size:clamp(17px,1.5vw,19px);font-weight:600;
-  color:var(--brass);letter-spacing:-.01em;
-  /* brass is a mid-tone and the apex figure lands on the lit screen; the
-     shadow carries it where the scrim alone can't reach */
-  text-shadow:0 1px 3px rgba(9,17,12,.95),0 0 8px rgba(9,17,12,.7);
+  font-family:var(--mono);font-size:clamp(17px,1.65vw,21px);font-weight:600;
+  color:var(--brass);letter-spacing:-.01em;white-space:nowrap;
+  text-shadow:0 1px 3px rgba(0,0,0,.6);
 }
 .readout__lbl{
-  font-family:var(--mono);font-size:9px;letter-spacing:.2em;
-  text-transform:uppercase;color:rgba(247,245,240,.66);margin-top:3px;
-  text-shadow:0 1px 3px rgba(9,17,12,.9);
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;white-space:nowrap;
+  text-transform:uppercase;color:rgba(242,242,242,.66);margin-top:5px;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);
 }
 
 @media (max-width:1000px){
-  .hero__grid{grid-template-columns:1fr;min-height:0}
-  .hero__copy{padding:64px var(--pad) 44px;order:1}
-  .hero__media{order:2;height:clamp(300px,52vw,440px)}
-  .hero__scrim{background:linear-gradient(180deg,rgba(22,40,30,.72) 0%,rgba(22,40,30,.25) 45%,rgba(22,40,30,.7) 100%)}
+  .hero__grid{min-height:min(80vh,620px)}
+  .hero__copy{padding:clamp(64px,13vw,96px) var(--pad)}
+}
+/* the stats panel needs desktop room; hide it before it crowds the copy */
+@media (max-width:960px){ .readout{display:none} }
+@media (max-width:700px){
+  .hero__scrim{background:
+    linear-gradient(180deg,rgba(26,26,26,.62) 0%,rgba(26,26,26,.34) 34%,rgba(26,26,26,.8) 100%),
+    linear-gradient(90deg,rgba(26,26,26,.84) 0%,rgba(26,26,26,.3) 100%);}
 }
 
 /* ============================================================
    DEALER STRIP
    ============================================================ */
-.dealers{background:var(--green-deep);color:var(--cream);padding:22px 0;border-top:1px solid var(--rule)}
+.dealers{background:var(--green-deep);color:var(--cream);padding:clamp(30px,4vw,46px) 0;border-top:1px solid var(--rule)}
 .dealers__in{
-  display:flex;align-items:center;gap:clamp(18px,3vw,44px);flex-wrap:wrap;justify-content:center;
+  display:flex;align-items:center;gap:clamp(26px,5vw,72px);flex-wrap:wrap;justify-content:center;
 }
 .dealers__lbl{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(247,245,240,.42);
+  font-family:var(--mono);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(242,242,242,.55);
 }
 .dealers__name{
   font-family:var(--display);font-size:17px;font-weight:600;
-  color:rgba(247,245,240,.82);letter-spacing:.01em;
+  color:rgba(242,242,242,.82);letter-spacing:.01em;
 }
-.dealers__logo{height:38px;width:auto;opacity:.9;display:block}
+.dealers__logo{height:58px;width:auto;opacity:.92;display:block}
+/* pure wordmark reads heavier than the icon+word marks — size it down to match */
+.dealers__logo--uneekor{height:32px}
+@media (max-width:700px){.dealers__logo{height:44px}.dealers__logo--uneekor{height:24px}}
 
 /* ============================================================
    SECTIONS — varied rhythm, not a metronome
    ============================================================ */
-.sec{padding:clamp(64px,9vw,120px) 0}
+.sec{padding:clamp(56px,7.5vw,100px) 0}
 .sec--tight{padding:clamp(48px,6vw,72px) 0}
 .sec--dark{background:var(--green);color:var(--cream)}
 .sec--deep{background:var(--green-deep);color:var(--cream)}
 .sec--dark h2,.sec--deep h2{color:var(--cream)}
 
-.sec__head{max-width:56ch;margin-bottom:clamp(34px,5vw,56px)}
-.sec h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin:0 0 16px;letter-spacing:-.022em}
-.sec__lede{font-size:1.06rem;line-height:1.68;opacity:.78;margin:0}
+.sec__head{max-width:58ch;margin-bottom:clamp(28px,4vw,46px)}
+.sec h2{font-size:clamp(2.2rem,4.2vw,3.4rem);margin:0 0 18px;letter-spacing:-.022em}
+.sec__lede{font-size:1.14rem;line-height:1.66;opacity:.8;margin:0}
 
 /* offset approach list — deliberately not a 3-up grid */
 .approach{display:grid;gap:0}
@@ -229,7 +283,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 .sec--dark .approach__row{border-top-color:var(--rule)}
 .approach__row:last-child{border-bottom:1px solid var(--rule-dark)}
 .sec--dark .approach__row:last-child{border-bottom-color:var(--rule)}
-.approach__k{font-family:var(--display);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:600}
+.approach__k{font-family:var(--display);font-size:clamp(1.25rem,2.1vw,1.65rem);font-weight:600}
 .approach__v{margin:0;opacity:.76;line-height:1.7}
 @media (max-width:760px){.approach__row{grid-template-columns:1fr;gap:10px}}
 
@@ -238,30 +292,30 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
    ============================================================ */
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);align-items:stretch}
 .tier{
-  background:rgba(247,245,240,.03);border:1px solid var(--rule);
+  background:rgba(242,242,242,.03);border:1px solid var(--rule);
   padding:clamp(26px,2.6vw,34px);display:flex;flex-direction:column;
   transition:.2s;
 }
-.tier:hover{transform:translateY(-3px);border-color:rgba(201,161,90,.4)}
+.tier:hover{transform:translateY(-3px);border-color:rgba(124,194,66,.4)}
 .tier__tag{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(247,245,240,.44);margin-bottom:14px;
+  color:rgba(242,242,242,.44);margin-bottom:14px;
 }
 .tier h3{font-size:1.5rem;color:var(--cream);margin:0 0 12px}
 .tier__desc{font-size:.95rem;line-height:1.66;opacity:.72;margin:0 0 22px}
 .tier__list{list-style:none;margin:0 0 26px;padding:0;flex:1}
 .tier__list li{
   font-size:.88rem;padding:8px 0 8px 18px;position:relative;opacity:.8;
-  border-bottom:1px solid rgba(247,245,240,.07);
+  border-bottom:1px solid rgba(242,242,242,.07);
 }
 .tier__list li::before{
   content:"";position:absolute;left:0;top:15px;width:6px;height:1.5px;background:var(--brass);
 }
 /* escalation */
-.tier--mid{background:rgba(247,245,240,.055);border-color:rgba(247,245,240,.2)}
+.tier--mid{background:rgba(242,242,242,.055);border-color:rgba(242,242,242,.2)}
 .tier--top{
-  background:linear-gradient(168deg,rgba(201,161,90,.13),rgba(201,161,90,.03));
-  border-color:rgba(201,161,90,.5);box-shadow:0 20px 60px -30px rgba(0,0,0,.8);
+  background:linear-gradient(168deg,rgba(124,194,66,.13),rgba(124,194,66,.03));
+  border-color:rgba(124,194,66,.5);box-shadow:0 20px 60px -30px rgba(0,0,0,.8);
 }
 .tier--top .tier__tag{color:var(--brass)}
 .tier--top h3{font-size:1.72rem}
@@ -295,8 +349,8 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 .gwork__badge{
   position:absolute;top:12px;left:12px;z-index:2;
   font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;
-  background:rgba(14,26,19,.86);color:var(--brass);padding:6px 10px;
-  border:1px solid rgba(201,161,90,.34);
+  background:rgba(15,15,15,.86);color:var(--brass);padding:6px 10px;
+  border:1px solid rgba(124,194,66,.34);
 }
 .gwork__body h3{font-size:1.16rem;margin:0 0 7px}
 .gwork__body p{margin:0;font-size:.9rem;line-height:1.6;opacity:.72}
@@ -312,7 +366,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   position:relative;
 }
 .grender__frame::after{
-  content:"";position:absolute;inset:0;border:1px solid rgba(201,161,90,.18);
+  content:"";position:absolute;inset:0;border:1px solid rgba(124,194,66,.18);
   margin:8px;pointer-events:none;
 }
 .grender__frame img{width:100%;aspect-ratio:4/3;object-fit:cover}
@@ -320,7 +374,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 
 /* spec strip — technical detail, reads like a spec sheet not interiors */
 .gspec{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.5vw,18px)}
-.gspec__item{border:1px solid var(--rule);background:rgba(247,245,240,.03)}
+.gspec__item{border:1px solid var(--rule);background:rgba(242,242,242,.03)}
 .gspec__item img{width:100%;aspect-ratio:3/2;object-fit:cover}
 .gspec__meta{padding:18px 20px 22px}
 .gspec__meta h3{font-size:1.08rem;color:var(--cream);margin:0 0 6px}
@@ -343,14 +397,14 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   color:var(--brass);padding-top:6px;
 }
 .step__n::before{content:counter(s,decimal-leading-zero)}
-.step h3{font-size:clamp(1.25rem,2.2vw,1.65rem);margin:0 0 10px}
+.step h3{font-size:clamp(1.35rem,2.4vw,1.8rem);margin:0 0 10px}
 .step p{margin:0;opacity:.76;line-height:1.7;max-width:62ch}
 
 /* ============================================================
    CTA BAND
    ============================================================ */
 .cta{background:var(--green-deep);color:var(--cream);padding:clamp(60px,8vw,96px) 0;text-align:center}
-.cta h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin:0 0 14px;color:var(--cream)}
+.cta h2{font-size:clamp(2rem,3.8vw,3rem);margin:0 0 16px;color:var(--cream)}
 .cta p{opacity:.74;max-width:52ch;margin:0 auto 30px}
 
 /* ============================================================
@@ -365,11 +419,11 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 }
 .field input,.field select,.field textarea{
   width:100%;padding:13px 14px;font-family:var(--body);font-size:15px;color:var(--ink);
-  background:#fff;border:1px solid rgba(22,40,30,.22);border-radius:0;
+  background:#fff;border:1px solid rgba(26,26,26,.22);border-radius:0;
 }
 .field textarea{min-height:118px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{
-  outline:none;border-color:var(--brass);box-shadow:0 0 0 3px rgba(201,161,90,.16);
+  outline:none;border-color:var(--brass);box-shadow:0 0 0 3px rgba(124,194,66,.16);
 }
 .field__hint{font-size:.78rem;opacity:.56;margin:6px 0 0}
 .hp{position:absolute;left:-9999px}
@@ -413,6 +467,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   .js .rv{opacity:1;transform:none;transition:none}
   .tracer__path{stroke-dashoffset:0;animation:none}
   .tracer__ball{opacity:1;animation:none}
+  .tracer__ring{opacity:.9;animation:none}
   .gwork__card:hover .gwork__media img{transform:none}
   .tier:hover{transform:none}
 }
