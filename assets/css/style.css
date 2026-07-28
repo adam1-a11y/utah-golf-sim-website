@@ -56,14 +56,17 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   border-bottom:1px solid var(--rule);
 }
 .nav__in{
-  max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);
+  max-width:var(--maxw);margin:0 auto;padding:8px var(--pad);
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 /* logo — stacked lockup, fixes the run-together bug */
 .logo{text-decoration:none;display:block;line-height:0}
-.nav .logo__img{display:block;height:66px;width:auto}
+/* nav uses the real horizontal brand logo (correct font + colors baked in),
+   sized large so the "GOLF SIM" sub-line stays legible */
+.nav .logo__img{display:block;height:60px;width:auto}
 .logo__img--foot{display:block;height:auto;width:150px}
-@media (max-width:900px){.nav .logo__img{height:58px}}
+@media (max-width:900px){.nav .logo__img{height:52px}}
+@media (max-width:380px){.nav .logo__img{height:46px}}
 .logo__eyebrow{
   display:block;font-family:var(--mono);font-size:10px;font-weight:600;
   letter-spacing:.42em;color:var(--brass);margin-bottom:5px;
