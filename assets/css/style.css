@@ -229,6 +229,8 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
   color:rgba(242,242,242,.82);letter-spacing:.01em;
 }
 .dealers__logo{height:38px;width:auto;opacity:.9;display:block}
+/* pure wordmark reads heavier than the icon+word marks — size it down to match */
+.dealers__logo--uneekor{height:22px}
 
 /* ============================================================
    SECTIONS — varied rhythm, not a metronome
