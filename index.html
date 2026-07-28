@@ -117,19 +117,12 @@ src="https://www.facebook.com/tr?id=1754399582407942&ev=PageView&noscript=1"
         <img src="/assets/img/hero.jpg" width="1376" height="768" fetchpriority="high" alt="A golf simulator room with wall-to-wall turf, a matte black screen wall showing a projected fairway, and a ceiling-mounted projector."></picture>
       <div class="hero__scrim"></div>
 
-      <svg class="hero__tracer" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <line class="tracer__tick" x1="90" y1="470" x2="90" y2="455"/>
-        <line class="tracer__tick" x1="230" y1="470" x2="230" y2="455"/>
-        <line class="tracer__tick" x1="370" y1="470" x2="370" y2="455"/>
-        <line class="tracer__tick" x1="510" y1="470" x2="510" y2="455"/>
-        <line class="tracer__tick" x1="650" y1="470" x2="650" y2="455"/>
-        <text class="tracer__lbl" x="90" y="486" text-anchor="middle">50</text>
-        <text class="tracer__lbl" x="230" y="486" text-anchor="middle">100</text>
-        <text class="tracer__lbl" x="370" y="486" text-anchor="middle">150</text>
-        <text class="tracer__lbl" x="510" y="486" text-anchor="middle">200</text>
-        <text class="tracer__lbl" x="650" y="486" text-anchor="middle">250</text>
-        <path class="tracer__path" pathLength="1000" d="M 150 430 C 320 300, 470 218, 588 235 C 650 246, 680 322, 688 410"/>
-        <circle class="tracer__ball" cx="688" cy="410" r="7" fill="#7CC242" style="transform-origin:688px 410px"/>
+      <!-- viewBox matches the photo (1376x768) and slices the same way it does,
+           so the arc lines up with the screen/mat at every viewport size -->
+      <svg class="hero__tracer" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="tracer__path" pathLength="1000" d="M 690 612 Q 888 -210 1298 566"/>
+        <circle class="tracer__ball tracer__ball--tee" cx="690" cy="612" r="6" style="transform-origin:690px 612px"/>
+        <circle class="tracer__ball tracer__ball--land" cx="1298" cy="566" r="9" style="transform-origin:1298px 566px"/>
       </svg>
 
       <div class="readout">
