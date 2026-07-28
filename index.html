@@ -113,16 +113,22 @@ src="https://www.facebook.com/tr?id=1754399582407942&ev=PageView&noscript=1"
 
     <div class="hero__media">
       <picture>
-        <source srcset="/assets/img/hero.webp" type="image/webp">
-        <img src="/assets/img/hero.jpg" width="1376" height="768" fetchpriority="high" alt="A golf simulator room with wall-to-wall turf, a matte black screen wall showing a projected fairway, and a ceiling-mounted projector."></picture>
+        <source srcset="/assets/img/hero-dark.webp" type="image/webp">
+        <img src="/assets/img/hero-dark.jpg" width="1376" height="768" fetchpriority="high" alt="A dimly lit golf simulator room with glowing green turf, a bright projected fairway on the screen wall, and a ceiling-mounted projector."></picture>
       <div class="hero__scrim"></div>
 
       <!-- viewBox matches the photo (1376x768) and slices the same way it does,
-           so the arc lines up with the screen/mat at every viewport size -->
+           so the arc lines up with the screen/mat at every viewport size.
+           Shot: tee glow on the turf, rising tracer, impact dead-centre on the
+           screen (910,375) with a glowing perspective ring. -->
       <svg class="hero__tracer" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path class="tracer__path" pathLength="1000" d="M 690 612 Q 822 -216 1270 560"/>
-        <circle class="tracer__ball tracer__ball--tee" cx="690" cy="612" r="6" style="transform-origin:690px 612px"/>
-        <circle class="tracer__ball tracer__ball--land" cx="1270" cy="560" r="9" style="transform-origin:1270px 560px"/>
+        <path class="tracer__path tracer__path--under" pathLength="1000" d="M 585 632 C 730 480, 815 205, 910 375"/>
+        <path class="tracer__path" pathLength="1000" d="M 585 632 C 730 480, 815 205, 910 375"/>
+        <circle class="tracer__tee-halo" cx="585" cy="632" r="16"/>
+        <circle class="tracer__ball tracer__ball--tee" cx="585" cy="632" r="6" style="transform-origin:585px 632px"/>
+        <ellipse class="tracer__ring tracer__ring--outer" cx="910" cy="377" rx="46" ry="16" style="transform-origin:910px 377px"/>
+        <ellipse class="tracer__ring" cx="910" cy="377" rx="28" ry="10" style="transform-origin:910px 377px"/>
+        <circle class="tracer__ball tracer__ball--land" cx="910" cy="375" r="6.5" style="transform-origin:910px 375px"/>
       </svg>
 
       <div class="readout">
