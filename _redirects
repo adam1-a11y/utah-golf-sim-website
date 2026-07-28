@@ -1,0 +1,6 @@
+# Clean URLs -> .html (nav links use extension-less paths)
+/how-it-works    /how-it-works.html    200
+/gallery         /gallery.html         200
+/about           /about.html           200
+/quote           /quote.html           200
+/thanks          /thanks.html          200
