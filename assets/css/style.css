@@ -123,11 +123,12 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 }
 .hero h1 em{text-shadow:0 0 26px rgba(124,194,66,.4)}
 .hero__grid{
+  position:relative;z-index:2;
   max-width:var(--maxw);margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);align-items:center;
-  min-height:min(86vh,780px);
+  display:flex;align-items:center;
+  min-height:min(86vh,760px);
 }
-.hero__copy{padding:80px var(--pad) 80px}
+.hero__copy{padding:clamp(76px,10vw,120px) var(--pad);max-width:620px}
 .hero h1{
   font-size:clamp(2.6rem,5.4vw,4.4rem);color:var(--cream);
   margin:0 0 22px;letter-spacing:-.025em;
@@ -139,17 +140,18 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 }
 .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
 
-.hero__media{position:relative;align-self:stretch;min-height:340px;background:var(--green-deep)}
+/* full-bleed: the photo fills the whole hero, headline sits over it */
+.hero__media{position:absolute;inset:0;z-index:0;background:var(--green-deep)}
 .hero__media picture{display:contents}
 .hero__media img,.hero__media video{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  /* the photo is shot bright and centre-weighted; bias the crop right so the
-     screen wall sits clear of the headline column */
-  object-position:62% center;
+  object-position:64% center;
 }
 .hero__scrim{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,var(--green) 0%,rgba(26,26,26,.86) 22%,rgba(26,26,26,.34) 62%,rgba(26,26,26,.5) 100%);
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg,rgba(26,26,26,.95) 0%,rgba(26,26,26,.8) 34%,rgba(26,26,26,.4) 64%,rgba(26,26,26,.34) 100%),
+    linear-gradient(180deg,rgba(26,26,26,.5) 0%,rgba(26,26,26,0) 24%,rgba(26,26,26,0) 56%,rgba(26,26,26,.88) 100%);
 }
 .hero__tracer{position:absolute;inset:0;width:100%;height:100%}
 
@@ -200,10 +202,15 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.05;margin:0
 }
 
 @media (max-width:1000px){
-  .hero__grid{grid-template-columns:1fr;min-height:0}
-  .hero__copy{padding:64px var(--pad) 44px;order:1}
-  .hero__media{order:2;height:clamp(300px,52vw,440px)}
-  .hero__scrim{background:linear-gradient(180deg,rgba(26,26,26,.72) 0%,rgba(26,26,26,.25) 45%,rgba(26,26,26,.7) 100%)}
+  .hero__grid{min-height:min(80vh,620px)}
+  .hero__copy{padding:clamp(64px,13vw,96px) var(--pad)}
+}
+@media (max-width:700px){
+  .readout{display:none}
+  .hero__media img,.hero__media video{object-position:62% center}
+  .hero__scrim{background:
+    linear-gradient(180deg,rgba(26,26,26,.62) 0%,rgba(26,26,26,.34) 34%,rgba(26,26,26,.8) 100%),
+    linear-gradient(90deg,rgba(26,26,26,.84) 0%,rgba(26,26,26,.3) 100%);}
 }
 
 /* ============================================================
